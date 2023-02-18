@@ -1,21 +1,25 @@
 import Head from 'next/head'
-import { Inter } from '@next/font/google'
+import Wordle from '@/wordle'
 import styles from '@/styles/Home.module.css'
+import words from '@/wordle/words.json';
 
-const inter = Inter({ subsets: ['latin'] })
+const getWord = () => {
+  return words[Math.floor(Math.random() * words.length)];
+};
 
 export default function Page() {
+
   return (
     <>
       <Head>
-        <title>Wordle</title>
+        <title>Wordle Clone</title>
         <meta name="description" content="Just another wordle implementation" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
       <main className={styles.main}>
-        <h1 className={inter.className}>Hello Wordle..</h1>
+        <Wordle getSolution={getWord} maxTries={5} />
       </main>
     </>
   )
