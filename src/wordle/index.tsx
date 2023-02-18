@@ -5,6 +5,7 @@ import style from './Wordle.module.scss';
 type WordleProps = {
 	getSolution: () => string;
 	maxTries?: number;
+	word: string;
 };
 
 export enum GameState {
@@ -14,10 +15,10 @@ export enum GameState {
 	RESET
 }
 
-const Wordle: FC<WordleProps> = ({ getSolution, maxTries }) => {
+const Wordle: FC<WordleProps> = ({ word, getSolution, maxTries }) => {
 	maxTries = maxTries || 6;
 	const [gameState, setGameState] = useState(GameState.PLAYING);
-	const [solution, setSolution] = useState(getSolution);
+	const [solution, setSolution] = useState(word);
 
 	useEffect(() => {
 		switch (gameState) {

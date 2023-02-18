@@ -3,11 +3,11 @@ import Wordle from '@/wordle'
 import styles from '@/styles/Home.module.css'
 import words from '@/wordle/words.json';
 
-const getWord = () => {
-  return words[Math.floor(Math.random() * words.length)];
-};
+export default function Page({ word, wordList }: { word: string, wordList: string[] }) {
 
-export default function Page() {
+  const getWord = () => {
+    return wordList[Math.floor(Math.random() * wordList.length)];
+  };
 
   return (
     <>
@@ -19,8 +19,17 @@ export default function Page() {
       </Head>
 
       <main className={styles.main}>
-        <Wordle getSolution={getWord} maxTries={5} />
+        <Wordle word={word} getSolution={getWord} maxTries={5} />
       </main>
     </>
   )
+}
+
+export async function getStaticProps() {
+  return {
+    props: {
+      word: words[Math.floor(Math.random() * words.length)],
+      wordList: words
+    }
+  }
 }
