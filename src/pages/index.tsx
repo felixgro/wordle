@@ -15,7 +15,7 @@ export default function Page() {
       </Head>
 
       <main className={styles.main}>
-        <h1 className={inter.className}>Hello Wordle.</h1>
+        <h1 className={inter.className}>Hello Wordle..</h1>
       </main>
     </>
   )
